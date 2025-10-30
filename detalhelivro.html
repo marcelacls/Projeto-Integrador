@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compra</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navegação">
+            <img src="./img/logo.PNG" alt="logo" width="32px" height="32px">
+            <nav class="nav-desktop">
+                 <a href="./index.html">Livros</a>
+                <a href="./destaques.html">Destaques</a>
+                <a href="./secoes.html">Seções</a>
+                <a href="./sobrenos.html">Sobre Nós</a> 
+                <a href="./contato.html">Contato</a>
+            </nav>
+            <div class="pesquisa">
+                <input class="pesquisa" type="text" placeholder="Pesquisa">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                        alt="Pesquisa" width="16px" height="16px">
+                </button>
+            </div>
+            <div class="usuario">
+                <button>
+                    <a href="./login.html">
+                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-64.png" width="16px"
+                            height="16px" alt="usuario">
+                        <span>Entrar</span>
+                    </a>
+                </button>
+                <button onclick="location.href='./cadastro.html'">
+                    <img src="https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/add_user-256.png" width="16px"
+                        height="16px" alt="cadastro">
+                    Cadastro
+                </button>
+            </div>
+            <input type="checkbox" id="menu-escondido" class="menu-escondido">
+            <label for="menu-escondido" class="hamburguer">
+                <span class="linha linha1"></span>
+                <span class="linha linha2"></span>
+                <span class="linha linha3"></span>
+            </label>
+            <ul class="menu">
+                <li><a href="./index.html">Livros</a></li>
+                <li><a href="./livros.html">Destaques</a></li>
+                <li><a href="./secoes.html">Seções</a></li>
+                <li><a href="./sobrenos.html">Sobre Nós</a></li> 
+                <li><a href="./contato.html">Contato</a></li>
+             </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="detalhe-livro-container">
+            
+            <div class="media-livro">
+                <img src="./img/hp3.png" alt="Capa do Livro: Harry Potter e o Prisioneiro de Azkaban">
+            </div>
+
+            <div class="info-livro">
+                <h1 class="titulo-livro">Harry Potter e o Prisioneiro de Azkaban</h1>
+                <p class="autor">Autor: J.K. Rowling</p>
+                
+                <div class="avaliacao">
+                    <span>⭐⭐⭐⭐⭐ (258 Avaliações)</span>
+                </div>
+
+                <hr>
+
+                <h2 class="preco-livro">R$ 89,90</h2>
+
+                <div class="descricao">
+                    <h3>Sinopse:</h3>
+                    <p>O livro Harry Potter e o Prisioneiro de Azkaban é o terceiro livro da aclamada série de J.K. Rowling, que narra as aventuras do jovem bruxo Harry Potter enquanto enfrenta desafios em seu mundo mágico. Sirius Black, um perigoso criminoso, fugiu da prisão de Azkaban e, supostamente, está atrás de Harry. O protagonista precisa lidar com a ameaça e com novos perigos que pairam sobre Hogwarts.</p>
+                    
+                    <ul class="especificacoes">
+                        
+<h1>Detalhes</h1>
+<table border="1px">
+    
+            <tr>
+                <td><b>Autora</b></td>
+                <td>J.K. Rowling</td>
+        
+            </tr>
+            <tr>
+            <td><b> Editora</b></td>
+            <td>Editora Rocco Ltda</td>
+            </tr>
+             <td><b>Volume</b></td>
+                <td>3</td>
+                </tr>
+            <tr>
+                <td><b>Gênero</b></td>
+                <td>Fantasia</td>
+                <tr>
+            <td><b>Ano de publicação</b></td>
+            <td>2017</td>
+            </tr>
+            </tr>
+            <tr>
+                <td><b>Número de páginas</b></td>
+                <td>288</td>
+            </tr>
+</table>
+
+            
+        </tbody>
+
+</table>
+                </div>
+
+                <div class="opcoes-compra">
+                    <label for="quantidade">Quantidade:</label>
+                    <input type="number" id="quantidade" value="1" min="1" max="10">
+                    <button class="botao-carrinho">Adicionar ao Carrinho</button>
+                    <button class="botao-comprar">Comprar Agora</button></a>
+                </div>
+            </div>
+        </div>
+           <footer>
+        <div class="conteudo-rodape">
+                        <div class="rodape-coluna logo-info">
+                <h3>Tesouro Literário</h3>
+                <p>Sua porta de entrada para os melhores livros. Encontre sua próxima aventura literária conosco.</p>
+                <div class="redes-sociais">
+                    <a href="https://www.facebook.com" aria-label="Facebook"><img src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-256.png" alt="Facebook" width="24"></a>
+                    <a href="https://www.instagram.com" aria-label="Instagram"><img src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/instagram_circle-256.png" alt="Instagram" width="24"></a>
+                    <a href="https://www.twitter.com" aria-label="Twitter/X"><img src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/twitter_circle-256.png" alt="Twitter/X" width="24"></a>
+                </div>
+            </div>
+
+                        <div class="rodape-coluna">
+                <h4>Suporte</h4>
+                <ul>
+                    <li><a href="./politicadeprivacidade.html">Política de Privacidade</a></li>
+                </ul>
+            </div>
+        
+                <div class="direitos-autorais">
+            <p>&copy; 2025 Tesouro Literário. Todos os direitos reservados.</p>
+</div>
+        </div>
+    </footer>
+    </main>
+</body>
+
+</html>
