@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aventura Concluída - Com Moedas Flutuantes</title>
+   
+    <style>
+        /* Paleta de Cores Fornecida */
+        :root {
+            --cinza-claro: #E0E0E0;
+            --azul-turquesa: #14A6BF;
+            --azul-marinho: #126698;
+            --azul-claro: #0075AE;
+            --azul-escuro-indigo: #3D528C;
+            --branco: #FFFFFF;
+            --ouro-moeda: #FFD700;
+        }
+ 
+        body {
+            /* --- Centralização Perfeita com Flexbox --- */
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+            height: 100vh;
+            margin: 0;
+           
+            background-color: var(--cinza-claro); /* Fundo Cinza Claro */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--azul-escuro-indigo);
+            overflow: hidden; /* Oculta qualquer overflow das moedas */
+            position: relative; /* Para posicionar as moedas em relação ao body */
+        }
+ 
+        /* --- Estilo do Cartão de Confirmação --- */
+        .confirmacao-card{
+            background-color: var(--branco);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-width: 450px;
+            width: 90%;
+            border-top: 6px solid var(--azul-turquesa); /* Linha de destaque Turquesa */
+            animation: fadeIn 0.8s ease-out;
+            position: relative; /* Para o pirata sair dele */
+            z-index: 10; /* Garante que o cartão fique acima das moedas */
+        }
+ 
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+ 
+        /* --- Ícone do Baú e Pirata --- */
+        .icon-container {
+            font-size: 70px;
+            margin-bottom: 20px;
+            color: var(--azul-marinho);
+            text-shadow: 0 0 10px rgba(0, 117, 174, 0.5);
+            animation: pulseBlue 1.5s infinite alternate;
+        }
+       
+        @keyframes pulseBlue {
+            from { transform: scale(1); opacity: 0.9; }
+            to { transform: scale(1.05); opacity: 1; }
+        }
+ 
+        .pirata-popup {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), opacity 0.5s ease;
+            z-index: 100;
+            font-size: 60px;
+        }
+ 
+        .confirmacao-card:hover .pirata-popup {
+            transform: translateX(-50%) translateY(20px) scale(1);
+            opacity: 1;
+        }
+ 
+        /* --- Mensagens e Botão --- */
+        .main-messagem {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--azul-marinho);
+            margin-bottom: 10px;
+        }
+ 
+        .segunda-messagem {
+            font-size: 1em;
+            color: var(--azul-escuro-indigo);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+ 
+        .detalhe-box {
+            background-color: var(--cinza-claro);
+            color: var(--azul-escuro-indigo);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+            border-left: 3px solid var(--azul-claro);
+        }
+ 
+        .btn-acao {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--azul-turquesa);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 10px rgba(20, 166, 191, 0.4);
+        }
+ 
+        .btn-acao:hover {
+            background-color: var(--azul-claro);
+            transform: translateY(-2px);
+        }
+ 
+        /* --- ESTILO E ANIMAÇÃO DAS MOEDAS --- */
+        .coin-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 5;
+        }
+ 
+        .coin {
+            position: absolute;
+            background-color: var(--ouro-moeda);
+            border-radius: 50%;
+            box-shadow: 0 0 5px rgba(255, 215, 0, 0.7);
+            opacity: 0;
+            animation: coinFall linear infinite;
+        }
+ 
+        @keyframes coinFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(720deg) scale(1.5);
+                opacity: 0;
+            }
+        }
+ 
+    </style>
+</head>
+<body>
+    <div class="coin-container" id="coinContainer"></div>
+   
+    <div class="confirmacao-card">
+       
+        <div class="icon-container">
+            <span role="img" aria-label="Baú de Tesouro"> 🎁 </span>
+        </div>
+ 
+        <div class="pirata-popup">
+            <span role="img" aria-label="Pirata"> 🏴‍☠️ </span>
+        </div>
+ 
+        <h1 class="main-message">
+            Sua compra foi concluída!
+        </h1>
+ 
+        <div class="detalhe-box">
+            <p>Seu mapa (Pedido #ABC12345) foi revelado.</p>
+            <p>Acompanhe o status por e-mail! ✉️</p>
+        </div>
+ 
+        <a href="mapa.html" class="btn-acao">
+            Ver o Mapa da Rota
+        </a>
+ 
+        <p class="segunda-message" style="margin-top: 30px;">
+            Volte sempre!
+        </p>
+    </div>
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const coinContainer = document.getElementById('coinContainer');
+            const numberOfCoins = 30; // Quantidade de moedas a gerar
+            const minCoinSize = 15; // Tamanho mínimo da moeda
+            const maxCoinSize = 35; // Tamanho máximo da moeda
+ 
+            function generateCoin() {
+                const coin = document.createElement('div');
+                coin.classList.add('coin');
+ 
+                const size = Math.random() * (maxCoinSize - minCoinSize) + minCoinSize;
+                coin.style.width = `${size}px`;
+                coin.style.height = `${size}px`;
+ 
+                // Posição horizontal aleatória
+                coin.style.left = `${Math.random() * 100}vw`;
+ 
+                // Duração e delay de animação aleatórios para parecer mais natural
+                const duration = Math.random() * 10 + 5; // Entre 5 e 15 segundos
+                const delay = Math.random() * 5; // Entre 0 e 5 segundos
+                coin.style.animationDuration = `${duration}s`;
+                coin.style.animationDelay = `${delay}s`;
+ 
+                coinContainer.appendChild(coin);
+ 
+                // Remover a moeda após a animação para otimização e manter o fluxo infinito
+                coin.addEventListener('animationend', () => {
+                    coin.remove();
+                    setTimeout(generateCoin, 100);
+                });
+            }
+ 
+            // Gerar as moedas iniciais
+            for (let i = 0; i < numberOfCoins; i++) {
+                generateCoin();
+            }
+ 
+            console.log("Confirmação de Compra com Moedas Carregada!");
+        });
+    </script>
+</body>
+</html>

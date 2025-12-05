@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="./css/style.css">
+   
+    <style>
+        /* ==================================== */
+        /* 1. ESTILOS CSS (Tema Náutico com as cores fornecidas) */
+        /* ==================================== */
+        :root {
+            /* Paleta de Cores */
+            --cor-cinza-claro: #E0E0E0;
+            --cor-turquesa: #14A6BF;
+            --cor-marinho: #126698;
+            --cor-azul-claro: #0075AE;
+            --cor-indigo: #3D528C;
+          
+            --cor-texto-principal: #126698;
+        }
+ 
+        body {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+             font-family: 'Poppins', sans-serif;
+            color: var(--cor-texto-principal);
+        }
+ 
+        /* Embarcação (Formulário Principal) */
+        .embarcacao {
+            background-color: #FFFFFF;
+            border: 3px solid var(--cor-marinho);
+            border-radius: 10px;
+            padding: 30px 40px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            width: 90%;
+            max-width: 650px;
+            margin: 20px;
+        }
+ 
+        h2 {
+            color: var(--cor-marinho);
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+ 
+        /* Estilo das seções */
+        .secao-mapa {
+            border: 1px solid var(--cor-azul-claro);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: var(--cor-cinza-claro); /* Cinza Claro */
+        }
+ 
+        legend {
+            color: var(--cor-marinho);
+            font-size: 1.1em;
+            padding: 0 10px;
+            font-weight: bold;
+        }
+ 
+        /* Campos de entrada e rótulos */
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            color: var(--cor-marinho);
+        }
+       
+        input[type="text"], input[type="number"], input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            box-sizing: border-box;
+            border: 1px solid var(--cor-marinho);
+            background-color: #FFFFFF;
+            border-radius: 3px;
+        }
+ 
+        /* Destaque de Preço */
+        .valor-azul {
+            color: var(--cor-marinho);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+ 
+        /* Resumo do Pedido */
+        .resumo-pedido {
+            background-color: #FFFFFF;
+            padding: 15px;
+            border: 1px dashed var(--cor-turquesa);
+            margin-top: 15px;
+            font-size: 1em;
+        }
+
+        .a {
+            text-decoration: none;
+        }
+ 
+        /* Botões de Ação */
+        .btn-acao {
+            background-color: var(--cor-marinho); /* Azul Marinho */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+ 
+        .btn-acao:hover {
+            background-color: var(--cor-turquesa); /* Azul Turquesa no hover */
+        }
+ 
+        .btn-finalizar {
+            width: 100%;
+            font-size: 1.3em;
+            margin-top: 25px;
+            padding: 12px;
+        }
+ 
+        /* Mensagem de Erro */
+        .mensagem-erro {
+            color: var(--cor-erro);
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 1px solid var(--cor-erro);
+            padding: 10px;
+            font-weight: bold;
+            margin-top: 15px;
+            text-align: center;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+ <header>
+        <div class="navegacao">
+             <button onclick="window.location.href='index.html'" style="background: none; border: none; padding: 0; cursor: pointer;">
+    <img src="./img/logo.PNG" alt="logo" width="70" height="70">
+</button>
+            <h3>Tesouro Literário</h3>
+            <nav class="nav-desktop">
+                <a href="./destaques.html">Destaques</a>
+                <a href="./secoes.html">Seções</a>
+                <a href="./secoes1.html">Fantasia</a>
+                <a href="./secoes2.html">Infantil</a>
+                <a href="./secoes3.html">Melhores Avaliados</a>
+            </nav>
+            
+            <div class="pesquisa pesquisa-desktop">
+                <input class="pesquisa" type="text" placeholder="Pesquisa">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                        alt="Pesquisa" width="16px" height="16px">
+                </button>
+            </div>
+            
+            <div class="usuario">
+                <button>
+                    <a href="./login.html">
+                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-64.png" width="16px"
+                            height="16px" alt="usuario">
+                        <span>Entrar</span>
+                    </a>
+                </button>
+                <button onclick="location.href='./cadastro.html'">
+                    <img src="https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/add_user-256.png" width="16px"
+                        height="16px" alt="cadastro">
+                    Cadastro
+                </button>
+            </div>
+
+            <input type="checkbox" id="menu-escondido" class="menu-escondido">
+            <label for="menu-escondido" class="hamburguer">
+                <span class="linha linha1"></span>
+                <span class="linha linha2"></span>
+                <span class="linha linha3"></span>
+            </label>
+            
+            <ul class="menu">
+                <li class="item-pesquisa">
+                    <div class="pesquisa pesquisa-mobile">
+                        <input class="pesquisa-input-mobile" type="text" placeholder="Pesquisa...">
+                        <button>
+                            <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                                alt="Pesquisa" width="16px" height="16px">
+                        </button>
+                    </div>
+                </li>
+                <li><a href="./livros.html">Destaques</a></li>
+                <li><a href="./secoes.html">Seções</a></li>
+                <li><a href="./secoes1.html">Fantasia</a></li>
+                <li><a href="./secoes2.html">Infantil</a></li>
+                <li><a href="./secoes3.html">Melhores Avaliados</a></li> 
+           </ul>
+        </div>
+    </header>
+    <main class="embarcacao">
+        <h2>⚓️ TESOURO Literário: Checkout</h2>
+ 
+        <form id="formLivro">
+            <fieldset class="secao-mapa">
+                <legend>📖 Seleção de Livro</legend>
+                <div class="item-pedido">
+                    <label for="titulo">Título do Livro:</label>
+                    <input type="text" id="titulo" value="Viagem ao Centro da Terra" required>
+                   
+                    <label for="quantidade">Quantidade de livros :</label>
+                    <input type="number" id="quantidade" value="1" min="1" max="5" required>
+                   
+                    <p class="preco-unitario">Preço por Cópia: <span class="valor-azul">R$ 65,00</span></p>
+                </div>
+                <div class="resumo-pedido">
+                    <p>Subtotal da Compra: <span id="subtotal" class="valor-azul">R$ 65,00</span></p>
+                </div>
+            </fieldset>
+ 
+            <fieldset class="secao-mapa">
+                <legend>👤 Dados do Leitor</legend>
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" required>
+               
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+            </fieldset>
+ 
+            <fieldset class="secao-mapa">
+                <legend>💳 Pagamento (Cartão)</legend>
+                <label for="numeroCartao">Número do Cartão (16 dígitos):</label>
+                <input type="text" id="numeroCartao" maxlength="16" placeholder="0000 0000 0000 0000" required>
+               
+                <label for="nomeCartao">Nome no Cartão:</label>
+                <input type="text" id="nomeCartao" required>
+            </fieldset>
+           
+            <p id="mensagemErro" class="mensagem-erro"></p>
+           
+            <button onclick="location.href='./finalizacao.html'"  type="submit" class="btn-acao btn-finalizar">Finalizar Compra</a></button>
+        </form>
+    </div>
+    </main>
+   <footer>
+        <div class="conteudo-rodape">
+
+            <!-- SOBRE -->
+            <div class="rodape-coluna">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a href="./sobrenos.html">Sobre a Tesouro Literário</a></li>
+                    <li><a href="#">Amigos do Bem</a></li>
+                </ul>
+            </div>
+
+            <!-- ATENDIMENTO -->
+            <div class="rodape-coluna">
+                <h4>Atendimento ao Cliente</h4>
+                <ul>
+                    <li><a href="./finalizacao.html">Acompanhe seu Pedido</a></li>
+                    <li><a href="./contato.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- LEGAL -->
+            <div class="rodape-coluna">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="./politicadeprivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="./politicadeprivacidade.html">Aviso de Cookies</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Devoluções</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Garantia</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Entrega</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Pagamento</a></li>
+                    <li><a href="./politicadeprivacidade.html">Código do Consumidor</a></li>
+                </ul>
+            </div>
+
+            <!-- FALE COM A CAROL -->
+            <div class="rodape-coluna">
+                <h4>Fale com a Tesouro Literário</h4>
+                <ul>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="rodape-coluna">
+                <h4>Redes Sociais</h4>
+                <div class="redes-sociais">
+                    <a href="https://www.facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+
+                </div>
+
+                <h4 class="pagamento-titulo">Métodos de Pagamento</h4>
+                <div class="pagamentos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    
+ 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Variáveis e Constantes
+            const inputQuantidade = document.getElementById('quantidade');
+            const spanSubtotal = document.getElementById('subtotal');
+            const inputNumeroCartao = document.getElementById('numeroCartao');
+            const formLivro = document.getElementById('formLivro');
+            const pMensagemErro = document.getElementById('mensagemErro');
+ 
+            const PRECO_UNITARIO = 65.00; // Preço do livro em R$
+            const QUANTIDADE_MAXIMA = 5;
+ 
+            // 2. Cálculo e Atualização do Subtotal
+            function calcularSubtotal() {
+                let quantidade = parseInt(inputQuantidade.value) || 0;
+               
+                // Aplica o limite
+                if (quantidade > QUANTIDADE_MAXIMA) {
+                    quantidade = QUANTIDADE_MAXIMA;
+                    inputQuantidade.value = QUANTIDADE_MAXIMA;
+                } else if (quantidade < 1) {
+                    quantidade = 1;
+                    inputQuantidade.value = 1;
+                }
+ 
+                const subtotal = quantidade * PRECO_UNITARIO;
+               
+                // Formata para moeda Brasileira
+                spanSubtotal.textContent = subtotal.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                });
+            }
+ 
+            // 3. Validação do Formulário
+            formLivro.addEventListener('submit', function(event) {
+                event.preventDefault();
+               
+                pMensagemErro.textContent = '';
+ 
+                let quantidade = parseInt(inputQuantidade.value);
+                let numeroCartao = inputNumeroCartao.value.trim().replace(/\s/g, '');
+                let valido = true;
+ 
+                // VALIDAÇÃO 1: Quantidade
+                if (quantidade < 1 || quantidade > QUANTIDADE_MAXIMA) {
+                    pMensagemErro.textContent = 'Erro: A quantidade de cópias deve ser de 1 a ' + QUANTIDADE_MAXIMA + '.';
+                    inputQuantidade.focus();
+                    valido = false;
+                }
+ 
+                // VALIDAÇÃO 2: Número do Cartão - 16 dígitos
+                if (valido && (numeroCartao.length !== 16 || isNaN(numeroCartao))) {
+                    pMensagemErro.textContent = 'Erro no pagamento: O número do cartão deve ter 16 dígitos.';
+                    inputNumeroCartao.focus();
+                    valido = false;
+                }
+               
+                // VALIDAÇÃO 3: Campos vazios
+                // Esta é uma checagem simples; o "required" do HTML ajuda mais.
+                if (valido && (!document.getElementById('nome').value.trim() || !document.getElementById('email').value.trim())) {
+                    pMensagemErro.textContent = 'Preencha todos os campos obrigatórios (Nome e Email).';
+                    valido = false;
+                }
+ 
+ 
+                // Sucesso
+                if (valido) {
+                    alert('✅ Compra Finalizada com Sucesso!\n' +
+                          'Livro: ' + document.getElementById('titulo').value + '\n' +
+                          'Quantidade: ' + quantidade + '\n' +
+                          'Total: ' + spanSubtotal.textContent +
+                          '\n(Os dados seriam enviados ao servidor aqui.)');
+                }
+            });
+ 
+            // 4. Inicialização
+            inputQuantidade.addEventListener('input', calcularSubtotal);
+            calcularSubtotal();
+        });
+    </script>
+</body>
+</html>     

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato — Tesouro Literário</title>
+    <meta name="description" content="Fale com a equipe do Tesouro Literário — contato, redes sociais e suporte ao cliente.">
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /* Estilos específicos da página de contato */
+        .contato-hero {
+           background-color: #14A6BF;
+           width: 100%;
+            color: white;
+            text-align: center;
+            padding: 60px 20px 40px;
+            margin-top: 64px;
+      
+        }
+
+        .contato-hero h1 {
+            color: white;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .contato-hero p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contato-container {
+            max-width: 1200px;
+            margin: -30px auto 60px;
+            padding: 0 20px;
+        }
+
+        .contato-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contato-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contato-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header-contato {
+            margin-bottom: 25px;
+        }
+
+        .card-header-contato h2 {
+            color: #3D528C;
+            font-size: 1.8em;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-header-contato p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+
+        /* Formulário */
+        .form-group-contato {
+            margin-bottom: 20px;
+        }
+
+        .form-label-contato {
+            display: block;
+            color: #3D528C;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .form-input-contato,
+        .form-textarea-contato {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E0E0E0;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input-contato:focus,
+        .form-textarea-contato:focus {
+            outline: none;
+            border-color: #14A6BF;
+            box-shadow: 0 0 0 3px rgba(20, 166, 191, 0.1);
+        }
+
+        .form-input-contato.error,
+        .form-textarea-contato.error {
+            border-color: #E74C3C;
+        }
+
+        .form-textarea-contato {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .form-row-contato {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-actions-contato {
+            display: flex;
+            gap: 15px;
+            justify-content: flex-end;
+            margin-top: 25px;
+        }
+
+        .btn-contato {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-primary-contato {
+            background: linear-gradient(135deg, #0075AE 0%, #14A6BF 100%);
+            color: white;
+        }
+
+        .btn-primary-contato:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(20, 166, 191, 0.3);
+        }
+
+        .btn-primary-contato:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary-contato {
+            background: #E0E0E0;
+            color: #3D528C;
+        }
+
+        .btn-secondary-contato:hover {
+            background: #d0d0d0;
+        }
+
+        /* Mensagens */
+        .mensagem-feedback {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .mensagem-feedback.show {
+            display: block;
+        }
+
+        .mensagem-sucesso {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        .mensagem-erro {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Informações de contato */
+        .info-contato-lista {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #f9f9f9;
+            transition: background 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: #f0f0f0;
+        }
+
+        .info-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #0075AE 0%, #14A6BF 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 117, 174, 0.2);
+        }
+
+        .info-icon img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .info-content {
+            flex: 1;
+        }
+
+        .info-tipo {
+            font-size: 0.85em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .info-valor {
+            color: #0075AE;
+            font-size: 1.1em;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-valor:hover {
+            color: #14A6BF;
+            text-decoration: underline;
+        }
+
+        .info-extra {
+            font-size: 0.85em;
+            color: #999;
+            margin-top: 3px;
+        }
+
+        .info-endereco {
+            color: #666;
+            font-style: normal;
+            line-height: 1.6;
+        }
+
+        /* Redes sociais */
+        .social-section-contato {
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid #E0E0E0;
+        }
+
+        .social-section-contato h3 {
+            color: #3D528C;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .social-links-contato {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-link-contato {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f5f5f5;
+            transition: all 0.3s ease;
+        }
+
+        .social-link-contato:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-link-contato img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Seção sobre */
+        .sobre-contato {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .sobre-logo {
+            flex-shrink: 0;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .sobre-texto h2 {
+            color: #3D528C;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .sobre-texto p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        /* Responsividade */
+        @media (max-width: 800px) {
+            .contato-hero {
+                padding: 40px 15px 30px;
+            }
+
+            .contato-hero h1 {
+                font-size: 2em;
+            }
+
+            .contato-hero p {
+                font-size: 1em;
+            }
+
+            .contato-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contato-card {
+                padding: 25px;
+            }
+
+            .form-row-contato {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .form-actions-contato {
+                flex-direction: column;
+            }
+
+            .btn-contato {
+                width: 100%;
+            }
+
+            .sobre-contato {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .sobre-logo {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .contato-hero h1 {
+                font-size: 1.6em;
+            }
+
+            .card-header-contato h2 {
+                font-size: 1.4em;
+            }
+
+            .info-icon {
+                width: 45px;
+                height: 45px;
+            }
+
+            .social-link-contato {
+                width: 45px;
+                height: 45px;
+            }
+
+            .social-link-contato img {
+                width: 26px;
+                height: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navegacao">
+            <button onclick="window.location.href='index.html'" style="background: none; border: none; padding: 0; cursor: pointer;">
+                <img src="./img/logo.PNG" alt="logo" width="70" height="70">
+            </button>
+            <h3>Tesouro Literário</h3>
+            <nav class="nav-desktop">
+                <a href="./destaques.html">Destaques</a>
+                <a href="./secoes.html">Seções</a>
+                <a href="./secoes1.html">Fantasia</a>
+                <a href="./secoes2.html">Infantil</a>
+                <a href="./secoes3.html">Melhores Avaliados</a>
+            </nav>
+            
+            <div class="pesquisa pesquisa-desktop">
+                <input class="pesquisa" type="text" placeholder="Pesquisa">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                        alt="Pesquisa" width="16px" height="16px">
+                </button>
+            </div>
+            
+            <div class="usuario">
+                <button>
+                    <a href="./login.html">
+                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-64.png" width="16px"
+                            height="16px" alt="usuario">
+                        <span>Entrar</span>
+                    </a>
+                </button>
+                <button onclick="location.href='./cadastro.html'">
+                    <img src="https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/add_user-256.png" width="16px"
+                        height="16px" alt="cadastro">
+                    Cadastro
+                </button>
+            </div>
+
+            <input type="checkbox" id="menu-escondido" class="menu-escondido">
+            <label for="menu-escondido" class="hamburguer">
+                <span class="linha linha1"></span>
+                <span class="linha linha2"></span>
+                <span class="linha linha3"></span>
+            </label>
+            
+            <ul class="menu">
+                <li class="item-pesquisa">
+                    <div class="pesquisa pesquisa-mobile">
+                        <input class="pesquisa-input-mobile" type="text" placeholder="Pesquisa...">
+                        <button>
+                            <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                                alt="Pesquisa" width="16px" height="16px">
+                        </button>
+                    </div>
+                </li>
+                <li><a href="./destaques.html">Destaques</a></li>
+                <li><a href="./secoes.html">Seções</a></li>
+                <li><a href="./secoes1.html">Fantasia</a></li>
+                <li><a href="./secoes2.html">Infantil</a></li>
+                <li><a href="./secoes3.html">Melhores Avaliados</a></li> 
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="contato-hero">
+        <h1>Entre em Contato</h1>
+        <p>Estamos aqui para ajudar! Envie sua mensagem e responderemos o mais breve possível.</p>
+    </div>
+
+    <main>
+        <div class="contato-container">
+            <!-- Grid principal -->
+            <div class="contato-grid">
+                <!-- Formulário de Contato -->
+                <div class="contato-card">
+                    <div class="card-header-contato">
+                        <h2>Envie sua mensagem</h2>
+                        <p>Tem uma dúvida, sugestão ou quer falar com nossa equipe? Preencha o formulário abaixo e retornaremos em breve.</p>
+                    </div>
+
+                    <div id="mensagem-sucesso" class="mensagem-feedback mensagem-sucesso">
+                        ✓ Mensagem enviada com sucesso! Entraremos em contato em breve.
+                    </div>
+
+                    <div id="mensagem-erro" class="mensagem-feedback mensagem-erro">
+                        ✗ Por favor, preencha todos os campos obrigatórios corretamente.
+                    </div>
+
+                    <form id="form-contato">
+                        <div class="form-row-contato">
+                            <div class="form-group-contato">
+                                <label for="nome" class="form-label-contato">Nome completo *</label>
+                                <input type="text" id="nome" class="form-input-contato" placeholder="Higor Vianna" required>
+                            </div>
+                            <div class="form-group-contato">
+                                <label for="email" class="form-label-contato">E-mail *</label>
+                                <input type="email" id="email" class="form-input-contato" placeholder="higor@exemplo.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group-contato">
+                            <label for="assunto" class="form-label-contato">Assunto</label>
+                            <input type="text" id="assunto" class="form-input-contato" placeholder="Sobre qual tema você gostaria de falar?">
+                        </div>
+
+                        <div class="form-group-contato">
+                            <label for="mensagem" class="form-label-contato">Mensagem *</label>
+                            <textarea id="mensagem" class="form-textarea-contato" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                        </div>
+
+                        <div class="form-actions-contato">
+                            <button type="button" class="btn-contato btn-secondary-contato" onclick="limparFormulario()">Limpar</button>
+                            <button type="submit" class="btn-contato btn-primary-contato" id="btn-enviar">Enviar mensagem</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Informações de Contato -->
+                <div class="contato-card">
+                    <div class="card-header-contato">
+                        <h2>Nossas informações</h2>
+                        <p>Entre em contato através de qualquer um dos canais abaixo.</p>
+                    </div>
+
+                    <div class="info-contato-lista">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="E-mail">
+                            </div>
+                            <div class="info-content">
+                                <div class="info-tipo">E-mail</div>
+                                <a href="mailto:contato@tesouroliterario.com" class="info-valor">contato@tesouroliterario.com</a>
+                                <div class="info-extra">Resposta em até 24h</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Telefone">
+                            </div>
+                            <div class="info-content">
+                                <div class="info-tipo">Telefone</div>
+                                <a href="tel:+5511999999999" class="info-valor">(11) 94002-8922</a>
+                                <div class="info-extra">Seg-Sex: 9h às 18h</div>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Endereço">
+                            </div>
+                            <div class="info-content">
+                                <div class="info-tipo">Endereço</div>
+                                <address class="info-endereco">
+                                    Rua Senac, 123<br>
+                                    São Paulo - SP<br>
+                                    CEP: 01234-567
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+
+                  
+                </div>
+            </div>
+
+            <!-- Seção Sobre -->
+            <div class="sobre-contato">
+                <img src="./img/logo.PNG" alt="Logo Tesouro Literário" class="sobre-logo">
+                <div class="sobre-texto">
+                    <h2>Quem somos</h2>
+                    <p>
+                        A <strong>Tesouro Literário</strong> é mais que uma livraria, é um portal para mundos infinitos. 
+                        Nossa missão é democratizar o acesso à leitura e incentivar a descoberta de novos mundos, oferecendo um catálogo diverso que 
+                        vai dos clássicos intemporais aos best-sellers mais recentes. 
+                        Acreditamos que um livro pode mudar um dia, um ano, e até mesmo uma vida.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="conteudo-rodape">
+            <!-- SOBRE -->
+            <div class="rodape-coluna">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a href="./sobrenos.html">Sobre a Tesouro Literário</a></li>
+                    <li><a href="#">Amigos do Bem</a></li>
+                </ul>
+            </div>
+
+            <!-- ATENDIMENTO -->
+            <div class="rodape-coluna">
+                <h4>Atendimento ao Cliente</h4>
+                <ul>
+                    <li><a href="./finalizacao.html">Acompanhe seu Pedido</a></li>
+                    <li><a href="./contato.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- LEGAL -->
+            <div class="rodape-coluna">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="./politicadeprivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="./politicadeprivacidade.html">Aviso de Cookies</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Devoluções</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Garantia</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Entrega</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Pagamento</a></li>
+                    <li><a href="./politicadeprivacidade.html">Código do Consumidor</a></li>
+                </ul>
+            </div>
+
+            <!-- FALE COM A TESOURO LITERÁRIO -->
+            <div class="rodape-coluna">
+                <h4>Fale com a Tesouro Literário</h4>
+                <ul>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="rodape-coluna">
+                <h4>Redes Sociais</h4>
+                <div class="redes-sociais">
+                    <a href="https://www.facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+                </div>
+
+                <h4 class="pagamento-titulo">Métodos de Pagamento</h4>
+                <div class="pagamentos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Validação e envio do formulário
+        document.getElementById('form-contato').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome');
+            const email = document.getElementById('email');
+            const mensagem = document.getElementById('mensagem');
+            const btnEnviar = document.getElementById('btn-enviar');
+            const msgSucesso = document.getElementById('mensagem-sucesso');
+            const msgErro = document.getElementById('mensagem-erro');
+            
+            // Remove classes de erro e mensagens anteriores
+            [nome, email, mensagem].forEach(campo => campo.classList.remove('error'));
+            msgSucesso.classList.remove('show');
+            msgErro.classList.remove('show');
+            
+            // Validação
+            let valido = true;
+            
+            if (!nome.value.trim()) {
+                nome.classList.add('error');
+                valido = false;
+            }
+            
+            if (!email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                email.classList.add('error');
+                valido = false;
+            }
+            
+            if (!mensagem.value.trim()) {
+                mensagem.classList.add('error');
+                valido = false;
+            }
+            
+            if (!valido) {
+                msgErro.classList.add('show');
+                msgErro.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                return;
+            }
+            
+            // Simula envio
+            btnEnviar.disabled = true;
+            btnEnviar.textContent = 'Enviando...';
+            
+            setTimeout(() => {
+                msgSucesso.classList.add('show');
+                msgSucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                this.reset();
+                btnEnviar.disabled = false;
+                btnEnviar.textContent = 'Enviar mensagem';
+                
+                // Remove mensagem após 5 segundos
+                setTimeout(() => {
+                    msgSucesso.classList.remove('show');
+                }, 5000);
+            }, 1000);
+        });
+        
+        // Remove erro ao digitar
+        ['nome', 'email', 'mensagem'].forEach(id => {
+            document.getElementById(id).addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+        
+        // Função limpar formulário
+        function limparFormulario() {
+            document.getElementById('form-contato').reset();
+            document.querySelectorAll('.form-input-contato, .form-textarea-contato').forEach(campo => {
+                campo.classList.remove('error');
+            });
+            document.getElementById('mensagem-sucesso').classList.remove('show');
+            document.getElementById('mensagem-erro').classList.remove('show');
+        }
+    </script>
+</body>
+</html

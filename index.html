@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicial</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navegacao">
+            <button onclick="window.location.href='index.html'"
+                style="background: none; border: none; padding: 0; cursor: pointer;">
+                <img src="./img/logo.PNG" alt="logo" width="70" height="70">
+            </button>
+            <h3>Tesouro Literário</h3>
+            <nav class="nav-desktop">
+                <a href="./destaques.html">Destaques</a>
+                <a href="./secoes.html">Seções</a>
+                <a href="./secoes1.html">Fantasia</a>
+                <a href="./secoes2.html">Infantil</a>
+                <a href="./secoes3.html">Melhores Avaliados</a>
+            </nav>
+
+            <div class="pesquisa pesquisa-desktop">
+                <input class="pesquisa" type="text" placeholder="Pesquisa">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                        alt="Pesquisa" width="16px" height="16px">
+                </button>
+            </div>
+
+            <div class="usuario">
+                <button>
+                    <a href="./login.html">
+                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-64.png" width="16px"
+                            height="16px" alt="usuario">
+                        <span>Entrar</span>
+                    </a>
+                </button>
+                <button onclick="location.href='./cadastro.html'">
+                    <img src="https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/add_user-256.png" width="16px"
+                        height="16px" alt="cadastro">
+                    Cadastro
+                </button>
+            </div>
+
+            <input type="checkbox" id="menu-escondido" class="menu-escondido">
+            <label for="menu-escondido" class="hamburguer">
+                <span class="linha linha1"></span>
+                <span class="linha linha2"></span>
+                <span class="linha linha3"></span>
+            </label>
+
+            <ul class="menu">
+                <li class="item-pesquisa">
+                    <div class="pesquisa pesquisa-mobile">
+                        <input class="pesquisa-input-mobile" type="text" placeholder="Pesquisa...">
+                        <button>
+                            <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                                alt="Pesquisa" width="16px" height="16px">
+                        </button>
+                    </div>
+                </li>
+                <li><a href="./livros.html">Destaques</a></li>
+                <li><a href="./secoes.html">Seções</a></li>
+                <li><a href="./secoes1.html">Fantasia</a></li>
+                <li><a href="./secoes2.html">Infantil</a></li>
+                <li><a href="./secoes3.html">Melhores Avaliados</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Container geral principal (útil para grid/flex de layout) -->
+        <div class="page-container">
+
+            <!-- ---------------------------
+                 Área 1: Carrossel (div separada)
+                 --------------------------- -->
+            <div class="carrossel-wrapper">
+                <div class="carrossel">
+                    <div class="slides">
+                        <div class="slide ativo" style="background-image: url('./img/carousel.png');"></div>
+                        <div class="slide" style="background-image: url('./img/carousel1.png');"></div>
+                        <div class="slide" style="background-image: url('./img/carousel2.png');"></div>
+                    </div>
+                    <h1 class="carouseltitulo">TESOURO LITERÁRIO</h1>
+                </div>
+            </div>
+
+            <!-- ---------------------------
+                 Área 2: Conteúdo do catálogo com filtro e cards (cada um em sua div)
+                 --------------------------- -->
+            <div class="catalogo-wrapper">
+                <h1 class="catalogo-titulo">Catálogo Completo de Livros</h1>
+
+                <div class="catalogo-container">
+                    <!-- Filtro em coluna separada -->
+                    <aside class="filtro-wrapper filtro-sidebar">
+                        <h2>Filtrar Livros</h2>
+
+                        <div class="filtro-grupo">
+                            <h3>Gênero</h3>
+                            <label><input type="checkbox" name="genero" value="fantasia" checked> Fantasia</label>
+                            <label><input type="checkbox" name="genero" value="romance"> Romance</label>
+                            <label><input type="checkbox" name="genero" value="infantil"> Infantojuvenil</label>
+                            <label><input type="checkbox" name="genero" value="ficcao"> Ficção Científica</label>
+                        </div>
+
+                        <div class="filtro-grupo">
+                            <h3>Preço</h3>
+                            <input type="range" min="10" max="150" value="150" id="range-preco">
+                            <p>Até: R$ <span id="valor-preco">300,00</span></p>
+                        </div>
+
+                        <button class="aplicar-filtro">Aplicar Filtros</button>
+                    </aside>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            // Referências aos elementos do DOM
+                            const rangePreco = document.getElementById('range-preco');
+                            const valorPrecoSpan = document.getElementById('valor-preco');
+                            const botaoAplicar = document.querySelector('.aplicar-filtro');
+
+                            // Função para formatar o valor para Real (R$)
+                            const formatarPreco = (valor) => {
+                                // Usa toLocaleString para formatação brasileira (vírgula e duas casas)
+                                return parseFloat(valor).toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+                            };
+
+                            // --- 1. Funcionalidade do Slider de Preço ---
+
+                            // Define o valor inicial do span com base no input range
+                            valorPrecoSpan.textContent = formatarPreco(rangePreco.value);
+
+                            // Evento: Atualizar o valor do preço ao mover o slider
+                            rangePreco.addEventListener('input', () => {
+                                // O valor do slider é o valor máximo do filtro de preço
+                                valorPrecoSpan.textContent = formatarPreco(rangePreco.value);
+
+                                // Opcional: Chama a função de aplicação de filtro imediatamente ao mover o slider (melhor UX)
+                                // aplicarFiltros();
+                            });
+
+                            // --- 2. Funcionalidade de Coleta e Aplicação de Filtros ---
+
+                            const aplicarFiltros = () => {
+                                const filtros = {};
+
+                                // Coletar Gêneros selecionados (apenas os marcados: ':checked')
+                                const checkboxesGenero = document.querySelectorAll('input[name="genero"]:checked');
+                                const generosSelecionados = Array.from(checkboxesGenero).map(cb => {
+                                    // Pega o valor do atributo 'value' (e não o texto do label) para ser usado na filtragem real
+                                    return cb.value;
+                                });
+                                filtros.genero = generosSelecionados;
+
+                                // Coletar Preço Máximo
+                                filtros.precoMaximo = parseFloat(rangePreco.value);
+
+                                console.log('--- Filtros Coletados ---');
+                                console.log('Gêneros selecionados:', filtros.genero);
+                                console.log('Preço Máximo (R$):', filtros.precoMaximo.toFixed(2));
+
+                                // ********* SIMULAÇÃO DA AÇÃO DE FILTRAR *********
+                                // (Aqui, na sua aplicação real, você faria a manipulação do DOM ou chamaria o backend)
+                                const generosTexto = generosSelecionados.length > 0 ? generosSelecionados.join(', ') : 'Nenhum gênero selecionado';
+
+                                alert(`✅ Filtros Aplicados:\n\n- Gêneros: ${generosTexto}\n- Preço Máximo: R$ ${formatarPreco(filtros.precoMaximo)}`);
+
+                                // Seu próximo passo aqui seria iterar sobre os cards (elementos na tela) e
+                                // esconder aqueles que não atendem aos critérios de filtros.genero e filtros.precoMaximo.
+                            };
+
+                            // Evento: Aplicação de filtros ao clicar no botão
+                            botaoAplicar.addEventListener('click', aplicarFiltros);
+
+                            // Opcional: Aplicar filtro ao mudar um checkbox (em vez de só no botão)
+                            const todosCheckboxes = document.querySelectorAll('input[name="genero"]');
+                            todosCheckboxes.forEach(checkbox => {
+                                checkbox.addEventListener('change', aplicarFiltros);
+                            });
+
+                            // Chama a função aplicarFiltros uma vez para definir o estado inicial (útil para o contador)
+                            // aplicarFiltros();
+                        });
+                    </script>
+                    <!-- Cards em área separada -->
+                    <section class="cards-wrapper catalogo-grid">
+                        <div class="contendo">
+
+                            <div class="card">
+                                <img src="./img/hp3.png" width="100%" alt="Livro Harry Potter">
+                                <h3>Harry Potter e o Prisioneiro de Azkaban</h3>
+                                <p>O livro Harry Potter e o Prisioneiro de Azkaban” é o terceiro livro da série de J.K.
+                                    Rowling, que narra as aventuras de Harry Potter enquanto enfrenta desafios em seu
+                                    mundo mágico.</p>
+                                <span class="card-preco">R$ 59,90</span>
+                                <a href="./detalhelivro.html">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/hp4.jpg" width="100%" alt="Livro Harry Potter">
+                                <h3>Harry Potter e o Cálice de Fogo</h3>
+                                <p>O livro Harry Potter e o Cálice de Fogo reserva muitas emoções, mágicas, e
+                                    acontecimentos inesperados, além de um novo torneio em que os alunos de Hogwarts
+                                    terão de demonstrar todas as habilidade mágicas...</p>
+                                <span class="card-preco">R$ 69,90</span>
+                                <a href="./livros.html">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/hp7.jpg" width="100%" alt="Livro Harry Potter">
+                                <h3>Harry Potter e as relíquias da morte</h3>
+                                <p>O livro Harry Potter e as relíquias da morte, de J.K. Rowling, é o sétimo e último
+                                    livro da série. Voldemorte está cada vez mais forte e Harry Potter precisa encontrar
+                                    e aniquilar as Horcruxes...</p>
+                                <span class="card-preco">R$ 79,90</span>
+                                <a href="./detalhelivro3.html">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/livro.jpg" width="100%" alt="Livro">
+                                <h3>O Pequeno Príncipe</h3>
+                                <p>"O Pequeno Príncipe", queridinho de muitos, de Antoine de Saint-Exupéry, narra a
+                                    história de um piloto que, após um acidente no deserto do Saara, encontra um menino
+                                    misterioso que vem de um pequeno planeta...</p>
+                                <span class="card-preco">R$ 35,00</span>
+                                <a href="detalhelivro4.html">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/livroddb.jpg" width="100%" alt="Livro ">
+                                <h3>O Diário de um Banana</h3>
+                                <p>O livro Diário de um Banana, escrito por Jeff Kinney, é um dos maiores sucessos da
+                                    literatura infantojuvenil. Ele narra, de forma leve e engraçada, a vida de Greg
+                                    Heffley...</p>
+                                <span class="card-preco">R$ 45,50</span>
+                                <a href="detalhe5.html">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/livroim.jpg" width="100%" alt="Livro">
+                                <h3>As Crônicas de Nárnia</h3>
+                                <p>Reinos mágicos, criaturas inesquecíveis e batalhas épicas entre o bem o mal: essas
+                                    histórias são narradas em As Crônicas de Nárnia ― uma série de sete livros...</p>
+                                <span class="card-preco">R$ 89,90</span>
+                                <a href="detalhe6.html">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/lvroqa.webp" width="100%" alt="Livro">
+                                <h3>Quarta Asa</h3>
+                                <p>Em Quarta Asa, best-seller #1 do The New York Times, uma jovem precisa sobreviver ao
+                                    treinamento em uma escola de elite para poderosos cavaleiros de dragões...</p>
+                                <span class="card-preco">R$ 54,90</span>
+                                <a href="#">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/livrocde.jpg" width="100%" alt="Livro">
+                                <h3>A Culpa é das Estrelas</h3>
+                                <p>A Culpa é das Estrelas é um romance emocionante de John Green que narra a história de
+                                    amor entre Hazel Grace e Augustus Waters, dois adolescentes que enfrentam o
+                                    câncer...</p>
+                                <span class="card-preco">R$ 49,90</span>
+                                <a href="#">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/hipotesedoamor.jpg" width="100%" alt="Livro ">
+                                <h3>A Hipótese do Amor</h3>
+                                <p>Quando um namoro de mentira entre cientistas encontra a irresistível força da
+                                    atração, todas as teorias cuidadosamente calculadas sobre o amor são postas à
+                                    prova...</p>
+                                <span class="card-preco">R$ 59,90</span>
+                                <a href="#">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/bibliotecamn.jpg" width="100%" alt="Livro">
+                                <h3>A Biblioteca da Meia-Noite</h3>
+                                <p>Aos 35 anos, Nora Seed é uma mulher cheia de talentos e poucas conquistas.
+                                    Arrependida das escolhas que fez no passado, ela vive se perguntando o que poderia
+                                    ter acontecido...</p>
+                                <span class="card-preco">R$ 69,90</span>
+                                <a href="#">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/instituto.jpg" width="100%" alt="Livro Harry Potter">
+                                <h3>O instituto</h3>
+                                <p>No meio da noite, em uma casa no subúrbio de Minneapolis, um grupo de invasores
+                                    assassina os pais de Luke e sequestra silenciosamente o menino de doze anos. A
+                                    operação leva...</p>
+                                <span class="card-preco">R$ 59,90</span>
+                                <a href="#">Comprar Agora</a>
+                            </div>
+
+                            <div class="card">
+                                <img src="./img/avidainvisivel.jpg" width="100%" alt="Livro">
+                                <h3>A vida invisível de Addie LaRue</h3>
+                                <p>Em A vida invisível de Addie LaRue, o aguardado best-seller de V.E. Schwab, conheça
+                                    Addie e se perca em sua vida invisível ― porém memorável....</p>
+                                <span class="card-preco">R$ 69,90</span>
+                                <a href="#">Comprar Agora</a>
+                            </div>
+
+
+
+                        </div>
+                    </section>
+                </div> <!-- fim catalogo-container -->
+
+                <nav class="botao-secoes" aria-label="Navegação de páginas do catálogo">
+                    <a href="./index.html" class="page">1</a>
+                    <a href="./compras.html" class="page">2</a>
+                    <a href="./compras1.html" class="page">3</a>
+                    <a href="./compras2.html" class="page">4</a>
+                </nav>
+            </div> <!-- fim catalogo-wrapper -->
+
+        </div> <!-- fim page-container -->
+    </main>
+
+  <footer>
+        <div class="conteudo-rodape">
+
+            <!-- SOBRE -->
+            <div class="rodape-coluna">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a href="./sobrenos.html">Sobre a Tesouro Literário</a></li>
+                    <li><a href="#">Amigos do Bem</a></li>
+                </ul>
+            </div>
+
+            <!-- ATENDIMENTO -->
+            <div class="rodape-coluna">
+                <h4>Atendimento ao Cliente</h4>
+                <ul>
+                    <li><a href="./mapa.html">Acompanhe seu Pedido</a></li>
+                    <li><a href="./contato.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- LEGAL -->
+            <div class="rodape-coluna">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="./politicadeprivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="./politicadeprivacidade.html">Aviso de Cookies</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Devoluções</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Garantia</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Entrega</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Pagamento</a></li>
+                    <li><a href="./politicadeprivacidade.html">Código do Consumidor</a></li>
+                </ul>
+            </div>
+
+            <!-- FALE COM A CAROL -->
+            <div class="rodape-coluna">
+                <h4>Fale com a Tesouro Literário</h4>
+                <ul>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="rodape-coluna">
+                <h4>Redes Sociais</h4>
+                <div class="redes-sociais">
+                    <a href="https://www.facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+
+                </div>
+
+                <h4 class="pagamento-titulo">Métodos de Pagamento</h4>
+                <div class="pagamentos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        let indice = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        function mostrarSlide(i) {
+            slides.forEach(s => s.classList.remove('ativo'));
+            slides[i].classList.add('ativo');
+        }
+
+        function moverSlide(direcao) {
+            indice += direcao;
+            if (indice < 0) indice = slides.length - 1;
+            if (indice >= slides.length) indice = 0;
+            mostrarSlide(indice);
+        }
+
+        // Troca automático a cada 5s
+        setInterval(() => moverSlide(1), 5000);
+
+
+    </script>
+</body>
+
+</html>

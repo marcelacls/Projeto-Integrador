@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compras</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="navegacao">
+             <button onclick="window.location.href='index.html'" style="background: none; border: none; padding: 0; cursor: pointer;">
+    <img src="./img/logo.PNG" alt="logo" width="70" height="70">
+</button>
+            <h3>Tesouro Literário</h3>
+            <nav class="nav-desktop">
+                <a href="./destaques.html">Destaques</a>
+                <a href="./secoes.html">Seções</a>
+                <a href="./secoes1.html">Fantasia</a>
+                <a href="./secoes2.html">Infantil</a>
+                <a href="./secoes3.html">Melhores Avaliados</a>
+            </nav>
+            
+            <div class="pesquisa pesquisa-desktop">
+                <input class="pesquisa" type="text" placeholder="Pesquisa">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                        alt="Pesquisa" width="16px" height="16px">
+                </button>
+            </div>
+            
+            <div class="usuario">
+                <button>
+                    <a href="./login.html">
+                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-64.png" width="16px"
+                            height="16px" alt="usuario">
+                        <span>Entrar</span>
+                    </a>
+                </button>
+                <button onclick="location.href='./cadastro.html'">
+                    <img src="https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/add_user-256.png" width="16px"
+                        height="16px" alt="cadastro">
+                    Cadastro
+                </button>
+            </div>
+
+            <input type="checkbox" id="menu-escondido" class="menu-escondido">
+            <label for="menu-escondido" class="hamburguer">
+                <span class="linha linha1"></span>
+                <span class="linha linha2"></span>
+                <span class="linha linha3"></span>
+            </label>
+            
+            <ul class="menu">
+                <li class="item-pesquisa">
+                    <div class="pesquisa pesquisa-mobile">
+                        <input class="pesquisa-input-mobile" type="text" placeholder="Pesquisa...">
+                        <button>
+                            <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                                alt="Pesquisa" width="16px" height="16px">
+                        </button>
+                    </div>
+                </li>
+                <li><a href="./livros.html">Destaques</a></li>
+                <li><a href="./secoes.html">Seções</a></li>
+                <li><a href="./secoes1.html">Fantasia</a></li>
+                <li><a href="./secoes2.html">Infantil</a></li>
+                <li><a href="./secoes3.html">Melhores Avaliados</a></li> 
+           </ul>
+        </div>
+    </header>
+    <main>
+        <h1 class="catalogo-titulo">Catálogo Completo de Livros</h1>
+        <div class="catalogo-container">
+            
+            <aside class="filtro-sidebar">
+                <h2>Filtrar Livros</h2>
+                
+                <div class="filtro-grupo">
+                    <h3>Gênero</h3>
+                    <label><input type="checkbox" name="genero" value="romance" checked>Romance</label>
+                    <label><input type="checkbox" name="genero" value="fantasia">Fantasia</label>
+                    <label><input type="checkbox" name="genero" value="infantil"> Infantojuvenil</label>
+                    <label><input type="checkbox" name="genero" value="ficcao"> Ficção Científica</label>
+                </div>
+
+                <div class="filtro-grupo">
+                    <h3>Preço</h3>
+                    <input type="range" min="10" max="150" value="150" id="range-preco">
+                    <p>Até: R$ <span id="valor-preco">300,00</span></p>
+                </div>
+                
+                <button class="aplicar-filtro">Aplicar Filtros</button>
+            </aside>
+
+            <section class="catalogo-grid">
+                <div class="contendo">
+                    
+                    <div class="card">
+                        <img src="./img/romance8.jpg" width="100%" alt="Livro Harry Potter">
+                        <h3>Diário de uma Paixão</h3>
+                        <p>Diário de uma paixão foi o primeiro romance publicado por Nicholas Sparks e é uma prova
+                         do talento que o consagrou por todo o mundo. Entremeando as histórias de Allie, Noah e Duke,
+                         ele construiu um conto romântico que se tornou um verdadeiro clássico.</p><br>
+                        <span class="card-preco">R$ 55,70</span>
+                        <a href="./detalhelivro.html">Comprar Agora</a>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/romance9.jpg" width="100%" alt="Livro Harry Potter">
+                        <h3>O Amor nos tempos do Cólera</h3>
+                        <p><br><br>“O Amor nos Tempos do Cólera”, escrito por Gabriel García Márquez e publicado em 1985,
+                         é uma obra-prima da literatura latino-americana que explora temas complexos como o amor, a passagem do
+                         tempo e a busca pela felicidade.</p><br>
+                        <span class="card-preco">R$ 25,00</span>
+                        <a href="./livros.html">Comprar Agora</a>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/romance10.jpg" width="100%" alt="Livro Harry Potter">
+                        <h3>O Morro dos Ventos Uivantes</h3>
+                        <p><br><br>Um amor proibido que sobrevive ao tempo e a morte, atormenntando duas gerações.
+                         O morro dos ventos Uivantes é um livro intenso com personagens contaditórios. A paixão entra
+                         na história como combustível para um enredo recheado de suspense e drama..</p><br>
+                        <span class="card-preco">R$ 15,00</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/romance11.jpg" width="100%" alt="Livro">
+                        <h3>Dom Casmurro</h3>
+                        <p><br><br>Dom Casmurro é um romance de Machado de Assis, publicado em 1899. Narrado na primeira pessoa,
+                         o enredo gira em torno de Bentinho e Capitu, dois amigos de infância que acabam casando. .</p><br>
+                        <span class="card-preco">R$ 40,00</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/romance13.jpg" width="100%" alt="Livro ">
+                        <h3>Teto para Dois</h3>
+                        <p><br><br>A trama gira em torno de Tessa e Will, dois estranhos que se encontram em uma situação inusitada. Ambos estão passando por dificuldades
+                         financeiras e acabam dividindo um apartamento em Londres. A convivência entre eles é cheia de altos e baixos, mas ao longo do tempo, eles descobrem
+                         que têm mais em comum do que imaginavam.</p><br>
+                        <span class="card-preco">R$ 27,00</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/romance14.jpg" width="100%" alt="Livro">
+                        <h3>Romeu e Julieta</h3>
+                        <p><br><br>Romeu e Julieta é uma das mais famosas histórias de amor da literatura.
+                         Ela se passa na cidade italiana de Verona, no século 16. Romeu Montecchio e Julieta Capuleto são dois jovens
+                         que acabam se apaixonando perdidamente, mas há uma barreira que impede os dois de ficarem juntos: suas famílias são grandes
+                         rivais e não permitiriam nunca que os dois se casassem..</p><br>
+                        <span class="card-preco">R$ 35,00</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./img/romance15.jpg" width="100%" alt="Livro">
+                        <h3>O Corcunda de Notre-Dame</h3>
+                        <p><br><br>O Corcunda de Notre-Dame foi publicada por Victor Hugo em março de 1831. Considerado o maior romance histórico do autor,
+                        o livro foi um de seus grandes sucessos, traduzido para vários idiomas e circulando por toda a Europa..</p><br>
+                        <span class="card-preco">R$ 71,16</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+                    
+                    <div class="card">
+                        <img src="./img/romance16.jpg" width="100%" alt="Livro">
+                        <h3>O Castelo Azul</h3>
+                        <p><br><br>Valancy Stirling tem 29 anos, é solteira e nunca se apaixonou. 
+                        Sua vida é um marasmo. Vive com a mãe autoritária e a tia intrometida, numa rotina exasperante.</p><br>
+                        <span class="card-preco">R$ 41,76</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+
+                    <div class="card">
+                        <img src="./img/jogosvorazes.jpg" width="100%" alt="Livro">
+                        <h3>Jogos Vorazes</h3>
+                        <p><br><br>Na abertura dos Jogos Vorazes, a organização não recolhe os corpos dos combatentes caídos e dá tiros de canhão até o final. Cada tiro, um morto. Onze tiros no primeiro dia. Treze jovens restaram, entre eles, Katniss. Para quem os tiros de canhão serão no dia seguinte?...
+
+</p><br>
+                        <span class="card-preco">R$ 109,90</span>
+                        <a href="#">Comprar Agora</a>
+                    </div>
+
+                </div> </section> </div> </div>
+            
+      <nav class="botao-secoes" aria-label="Navegação de páginas do catálogo">
+        <a href="./index.html" class="page">1</a>
+        <a href="./compras.html" class="page">2</a>
+        <a href="./compras1.html" class="page">3</a>
+        <a href="./compras2.html" class="page">4</a>
+      </nav> 
+    </div>
+</main>
+<footer>
+        <div class="conteudo-rodape">
+
+            <!-- SOBRE -->
+            <div class="rodape-coluna">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a href="./sobrenos.html">Sobre a Tesouro Literário</a></li>
+                    <li><a href="#">Amigos do Bem</a></li>
+                </ul>
+            </div>
+
+            <!-- ATENDIMENTO -->
+            <div class="rodape-coluna">
+                <h4>Atendimento ao Cliente</h4>
+                <ul>
+                    <li><a href="./finalizacao.html">Acompanhe seu Pedido</a></li>
+                    <li><a href="./contato.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- LEGAL -->
+            <div class="rodape-coluna">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="./politicadeprivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="./politicadeprivacidade.html">Aviso de Cookies</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Devoluções</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Garantia</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Entrega</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Pagamento</a></li>
+                    <li><a href="./politicadeprivacidade.html">Código do Consumidor</a></li>
+                </ul>
+            </div>
+
+            <!-- FALE COM A CAROL -->
+            <div class="rodape-coluna">
+                <h4>Fale com a Tesouro Literário</h4>
+                <ul>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="rodape-coluna">
+                <h4>Redes Sociais</h4>
+                <div class="redes-sociais">
+                    <a href="https://www.facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+
+                </div>
+
+                <h4 class="pagamento-titulo">Métodos de Pagamento</h4>
+                <div class="pagamentos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    
+
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Estilos básicos para o formulário de login */
+   
+     body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.tela-cadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px); /* 100vh menos a altura do header */
+  padding: 40px 0;
+}
+
+    .form-container {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px #126688;
+      width: 350px;
+      box-sizing: border-box;
+    }
+    .form-container .title {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+      color: #126688;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    .input {
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .page-link {
+      text-align: right;
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: #666;
+      cursor: pointer;
+    }
+    .page-link:hover {
+      text-decoration: underline;
+    }
+    .form-btn {
+      background-color: #14A6BF;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .form-btn:hover {
+      background-color: #126688;
+    }
+    .sign-up-label {
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+    }
+    .sign-up-link {
+      color: #14A6BF;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .sign-up-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <div class="navegacao">
+             <button onclick="window.location.href='index.html'" style="background: none; border: none; padding: 0; cursor: pointer;">
+    <img src="./img/logo.PNG" alt="logo" width="70" height="70">
+</button>
+            <h3>Tesouro Literário</h3>
+            <nav class="nav-desktop">
+                <a href="./destaques.html">Destaques</a>
+                <a href="./secoes.html">Seções</a>
+                <a href="./secoes1.html">Fantasia</a>
+                <a href="./secoes2.html">Infantil</a>
+                <a href="./secoes3.html">Melhores Avaliados</a>
+            </nav>
+            
+            <div class="pesquisa pesquisa-desktop">
+                <input class="pesquisa" type="text" placeholder="Pesquisa">
+                <button>
+                    <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                        alt="Pesquisa" width="16px" height="16px">
+                </button>
+            </div>
+            
+            <div class="usuario">
+                <button>
+                    <a href="./login.html">
+                        <img src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-64.png" width="16px"
+                            height="16px" alt="usuario">
+                        <span>Entrar</span>
+                    </a>
+                </button>
+                <button onclick="location.href='./cadastro.html'">
+                    <img src="https://cdn3.iconfinder.com/data/icons/miscellaneous-80/60/add_user-256.png" width="16px"
+                        height="16px" alt="cadastro">
+                    Cadastro
+                </button>
+            </div>
+
+            <input type="checkbox" id="menu-escondido" class="menu-escondido">
+            <label for="menu-escondido" class="hamburguer">
+                <span class="linha linha1"></span>
+                <span class="linha linha2"></span>
+                <span class="linha linha3"></span>
+            </label>
+            
+            <ul class="menu">
+                <li class="item-pesquisa">
+                    <div class="pesquisa pesquisa-mobile">
+                        <input class="pesquisa-input-mobile" type="text" placeholder="Pesquisa...">
+                        <button>
+                            <img src="https://cdn1.iconfinder.com/data/icons/unicons-line-vol-5/24/search-alt-256.png"
+                                alt="Pesquisa" width="16px" height="16px">
+                        </button>
+                    </div>
+                <li><a href="./destaques.html">Destaques</a></li>
+                <li><a href="./secoes.html">Seções</a></li>
+                <li><a href="./secoes1.html">Fantasia</a></li>
+                <li><a href="./secoes2.html">Infantil</a></li>
+                <li><a href="./secoes3.html">Melhores Avaliados</a></li> 
+           </ul>
+        </div>
+    </header>
+  <main class="tela-cadastro">
+    <div class="form-container">
+      <p class="title">Cadastro</p>
+      <p>Preencha os campos:</p>
+      <form class="form">
+        <input type="name" class="input" placeholder="Digite o seu nome completo" required />
+        <input type="email" class="input" placeholder="Digite seu e-mail" required />
+        <input type="password" class="input" placeholder="Crie uma senha" required />
+        <div>
+                    <div class="check">
+                        <input type="checkbox" id="termos" value="sim" required>
+                        <label for="termos">Eu li e aceito os <a href="https://www.google.com.br" target="_blank">termos de uso</a> da plataforma.</label>
+                    </div>
+        <button class="form-btn">Cadastrar</button>
+      </form>
+      <p class="sign-up-label">
+        Já tem uma conta?
+        <span class="sign-up-link" onclick="location.href='./login.html'">Acessar conta</span>
+      </p>
+    </div>
+  </main>
+  <footer>
+        <div class="conteudo-rodape">
+
+            <!-- SOBRE -->
+            <div class="rodape-coluna">
+                <h4>Sobre</h4>
+                <ul>
+                    <li><a href="./sobrenos.html">Sobre a Tesouro Literário</a></li>
+                    <li><a href="#">Amigos do Bem</a></li>
+                </ul>
+            </div>
+
+            <!-- ATENDIMENTO -->
+            <div class="rodape-coluna">
+                <h4>Atendimento ao Cliente</h4>
+                <ul>
+                    <li><a href="./finalizacao.html">Acompanhe seu Pedido</a></li>
+                    <li><a href="./contato.html">FAQ</a></li>
+                </ul>
+            </div>
+
+            <!-- LEGAL -->
+            <div class="rodape-coluna">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="./politicadeprivacidade.html">Política de Privacidade</a></li>
+                    <li><a href="./politicadeprivacidade.html">Aviso de Cookies</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Devoluções</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Garantia</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Entrega</a></li>
+                    <li><a href="./politicadeprivacidade.html">Política de Pagamento</a></li>
+                    <li><a href="./politicadeprivacidade.html">Código do Consumidor</a></li>
+                </ul>
+            </div>
+
+            <!-- FALE COM A CAROL -->
+            <div class="rodape-coluna">
+                <h4>Fale com a Tesouro Literário</h4>
+                <ul>
+                    <li><a href="./contato.html">Contato</a></li>
+                </ul>
+            </div>
+
+            <!-- REDES SOCIAIS -->
+            <div class="rodape-coluna">
+                <h4>Redes Sociais</h4>
+                <div class="redes-sociais">
+                    <a href="https://www.facebook.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"></a>
+
+                </div>
+
+                <h4 class="pagamento-titulo">Métodos de Pagamento</h4>
+                <div class="pagamentos">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal">
+                </div>
+            </div>
+
+        </div>
+    </footer>
+    
+</body>
+</html>
